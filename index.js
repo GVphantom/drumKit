@@ -36,11 +36,19 @@ const conditionCheck = (condition) => {
 const handleClick = (e) => {
   const listValue = e.target.innerHTML;
   conditionCheck(listValue);
+  bttnAnimation(listValue);
 };
 
 const keyPress = (e) => {
   const keyCode = e.key;
   conditionCheck(keyCode);
+  bttnAnimation(keyCode);
+};
+
+const bttnAnimation = (currentKey) => {
+  const activeBttn = document.querySelector(`.${currentKey}`);
+  activeBttn.classList.add("pressed");
+  setTimeout(() => activeBttn.classList.remove("pressed", 100));
 };
 
 Array.from(bttnDrum).map((bttn) => bttn.addEventListener("click", handleClick));

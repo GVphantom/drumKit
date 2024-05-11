@@ -30,6 +30,8 @@ const makeNoise = (condition) => {
       const crash = new Audio("./sounds/crash.mp3");
       crash.play();
       break;
+    default:
+      break;
   }
 };
 
@@ -47,8 +49,10 @@ const keyPress = (e) => {
 
 const bttnAnimation = (currentKey) => {
   let activeBttn = document.querySelector(`.${currentKey}`);
-  activeBttn.classList.add("pressed");
-  setTimeout(() => activeBttn.classList.remove("pressed"), 100);
+  if (activeBttn !== null) {
+    activeBttn.classList.add("pressed");
+    setTimeout(() => activeBttn.classList.remove("pressed"), 100);
+  }
 };
 
 Array.from(bttnDrum).map((bttn) => bttn.addEventListener("click", handleClick));

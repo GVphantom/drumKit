@@ -1,6 +1,6 @@
 const bttnDrum = document.querySelectorAll(".drum");
 
-const conditionCheck = (condition) => {
+const makeNoise = (condition) => {
   switch (condition) {
     case "w":
       const tom1 = new Audio("./sounds/tom-1.mp3");
@@ -35,20 +35,20 @@ const conditionCheck = (condition) => {
 
 const handleClick = (e) => {
   const listValue = e.target.innerHTML;
-  conditionCheck(listValue);
+  makeNoise(listValue);
   bttnAnimation(listValue);
 };
 
 const keyPress = (e) => {
   const keyCode = e.key;
-  conditionCheck(keyCode);
+  makeNoise(keyCode);
   bttnAnimation(keyCode);
 };
 
 const bttnAnimation = (currentKey) => {
-  const activeBttn = document.querySelector(`.${currentKey}`);
+  let activeBttn = document.querySelector(`.${currentKey}`);
   activeBttn.classList.add("pressed");
-  setTimeout(() => activeBttn.classList.remove("pressed", 100));
+  setTimeout(() => activeBttn.classList.remove("pressed"), 100);
 };
 
 Array.from(bttnDrum).map((bttn) => bttn.addEventListener("click", handleClick));
